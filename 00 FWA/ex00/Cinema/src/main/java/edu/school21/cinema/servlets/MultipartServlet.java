@@ -1,5 +1,7 @@
 package edu.school21.cinema.servlets;
 
+import edu.school21.cinema.config.AppConf;
+import edu.school21.cinema.models.Avatar;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
@@ -13,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 @WebServlet("/images")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
@@ -21,23 +28,29 @@ import java.io.*;
 public class MultipartServlet extends HttpServlet {
 
     private UserService userService;
+    private String avatarPath;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
         User user = (User) req.getSession().getAttribute("user");
-        String UPLOAD_DIRECTORY = "images/users/" + user.getLogin();
 
-        String uploadPath = getServletContext().getRealPath("") + UPLOAD_DIRECTORY;
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) uploadDir.mkdir();
+        String UPLOAD_DIRECTORY = avatarPath + "/" + user.getLogin();
+        Path avatarPath = Paths.get(UPLOAD_DIRECTORY);
+        Files.createDirectories(avatarPath);
 
         String fileName = null;
+        String fileOriginalName = null;
+        String size = "size";
+        String mime = "mime";
+
         for (Part part : req.getParts()) {
-            fileName = getFileName(part);
-            part.write(uploadPath + File.separator + fileName);
+            fileOriginalName = getFileName(part);
+            fileName = timeStamp + "_" + fileOriginalName;
+            part.write(UPLOAD_DIRECTORY + File.separator + fileName);
         }
-        user.setAvatar(fileName);
+        user.setAvatar(new Avatar(user.getUserId(), fileName, fileOriginalName, size, mime));
         userService.updateAvatar(user);
 //        user.setAvatar(uploadPath + File.separator + fileName);
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(req, resp);
@@ -56,6 +69,7 @@ public class MultipartServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         ApplicationContext applicationContext = (ApplicationContext) config.getServletContext().getAttribute("springContext");
         userService = applicationContext.getBean(UserService.class);
+        avatarPath = applicationContext.getBean(AppConf.class).getAvatarPath();
         super.init(config);
     }
 }

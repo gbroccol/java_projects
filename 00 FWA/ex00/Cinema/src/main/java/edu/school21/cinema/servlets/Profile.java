@@ -1,8 +1,5 @@
 package edu.school21.cinema.servlets;
 
-import edu.school21.cinema.models.User;
-import edu.school21.cinema.models.UserAuthentication;
-import edu.school21.cinema.repositories.UserRepository;
 import edu.school21.cinema.services.UserAuthenticationService;
 import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
@@ -23,7 +20,7 @@ public class Profile extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         getServletContext().getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
     }
 
     @Override

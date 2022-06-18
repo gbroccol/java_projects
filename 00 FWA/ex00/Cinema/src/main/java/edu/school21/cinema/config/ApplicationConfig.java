@@ -19,6 +19,9 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 
+    @Value("${user.images.folder.path}")
+    private String avatarsPath;
+
     @Value("${datasource.url}")
     private String url;
 
@@ -66,5 +69,8 @@ public class ApplicationConfig {
         return new UserAuthenticationService(userAuthenticationRepository());
     }
 
-
+    @Bean
+    public AppConf avatarService() {
+        return new AppConf(avatarsPath);
+    }
 }

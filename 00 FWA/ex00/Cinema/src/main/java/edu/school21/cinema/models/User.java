@@ -18,7 +18,7 @@ public class User {
     private String      lastName;
     private String      phoneNumber;
     private String      email;
-    private String      avatar;
+    private Avatar      avatar;
 
     public User(String login, String password, String firstName, String lastName, String phoneNumber, String email) {
         this.login = login;

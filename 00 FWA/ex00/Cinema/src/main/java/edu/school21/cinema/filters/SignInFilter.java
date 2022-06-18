@@ -3,10 +3,11 @@ package edu.school21.cinema.filters;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebFilter(value = "/profile") //, initParams = {@WebInitParam(name = "name", value = "value")})
-public class ProfileFilter implements Filter {
+@WebFilter(value = "/signIn")
+public class SignInFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
@@ -16,13 +17,12 @@ public class ProfileFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
 
         HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
 
         if (request.getSession(false) != null && request.getSession().getAttribute("user") != null) {
-            filterChain.doFilter(servletRequest, servletResponse);
+            response.sendRedirect(request.getContextPath() + "/profile");
         } else {
-            request.getSession().setAttribute("error_code", "403");
-            request.getSession().setAttribute("error_msg", "Forbidden. No access");
-            request.getRequestDispatcher("/error.jsp").forward(servletRequest, servletResponse);
+            filterChain.doFilter(servletRequest, servletResponse);
         }
     }
 
