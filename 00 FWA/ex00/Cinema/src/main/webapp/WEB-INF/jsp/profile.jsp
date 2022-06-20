@@ -8,12 +8,14 @@
 
 <%
     User user = (User) session.getAttribute("user");
-    String avatarPath;
+    String avatarPath = (String) session.getAttribute("avatarPath");
+
     if (user.getAvatar() == null) {
         avatarPath = "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg";
     } else {
-        avatarPath = "images/users/" + user.getLogin() + "/" + user.getAvatar().getFileName();
+        avatarPath = request.getContextPath() + "/images/" + user.getAvatar().getFileName();
     }
+
 %>
 
 <div class="profile">
@@ -21,12 +23,7 @@
     <div class="sidebar">
         <div class="block">
             <h3> Photo </h3>
-
-            <img class="circle" src="<%= avatarPath %>">
-
-<%--            <img class="circle" src="/home/anastasiya/Desktop/img_test_folder/06.jpg">--%>
-
-
+            <img class="circle" src="<%= avatarPath %>" alt="User avatar">
             <form method="post" action="<%= request.getContextPath() %>/images" enctype="multipart/form-data">
                 Choose a file: <input type="file" name="multiPartServlet" />
                 <input type="submit" value="Upload" />
@@ -55,34 +52,6 @@
         <div class="block">
             <h3> Authentications list </h3>
             <hr>
-
-<%--            <table>--%>
-<%--                <tr>--%>
-<%--                    <th>Date</th>--%>
-<%--                    <th>Time</th>--%>
-<%--                    <th>IP</th>--%>
-<%--                </tr>--%>
-
-<%--                <%--%>
-<%--                    List<UserAuthentication> authList = (List<UserAuthentication>) request.getAttribute("auth_list");--%>
-<%--                    if (authList != null) {--%>
-<%--                        for (UserAuthentication auth : authList) {--%>
-<%--                %>--%>
-
-<%--                <tr>--%>
-<%--                    <td> <%= auth.getDate() == null ? "Date is null :(" : auth.getDate() %> </td>--%>
-<%--                    <td> <%= auth.getTime() == null ? "Time is null :(" : auth.getTime() %> </td>--%>
-<%--                    <td> <%= auth.getIp() == null ? "IP is null :(" : auth.getIp() %> </td>--%>
-<%--                </tr>--%>
-
-<%--                <%--%>
-<%--                        }--%>
-<%--                    }--%>
-<%--                %>--%>
-
-<%--            </table>--%>
-
-
             <table>
                 <th>Date</th>
                 <th>Time</th>
@@ -102,12 +71,6 @@
                     </tr>
                 </c:forEach>
             </table>
-
-
-
-
-
-
         </div>
 
         <div class="block">

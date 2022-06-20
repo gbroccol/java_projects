@@ -1,5 +1,6 @@
 package edu.school21.cinema.servlets;
 
+import edu.school21.cinema.config.AppConf;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.models.UserAuthentication;
 import edu.school21.cinema.services.UserAuthenticationService;
@@ -18,11 +19,12 @@ import java.util.List;
 import java.util.Optional;
 
 @WebServlet("/signIn")
-public class SignIn extends HttpServlet {
+public class SignInServlet extends HttpServlet {
 
     private UserService userService;
     private UserAuthenticationService userAuthenticationService;
     private BCryptPasswordEncoder encoder;
+    private String avatarPath;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,6 +42,7 @@ public class SignIn extends HttpServlet {
             User user = optionalUser.get();
             if (encoder.matches(password, user.getPassword())) {
                 request.getSession().setAttribute("user", optionalUser.get());
+                request.getSession().setAttribute("avatarPath", avatarPath);
                 String ip = request.getRemoteHost();
                 if (ip.equals("0:0:0:0:0:0:0:1")) {
                     userAuthenticationService.save(user, "127.0.0.1");
@@ -66,6 +69,7 @@ public class SignIn extends HttpServlet {
         userService = applicationContext.getBean(UserService.class);
         userAuthenticationService = applicationContext.getBean(UserAuthenticationService.class);
         encoder = new BCryptPasswordEncoder();
+        avatarPath = applicationContext.getBean(AppConf.class).getAvatarPath();
         super.init(config);
     }
 }

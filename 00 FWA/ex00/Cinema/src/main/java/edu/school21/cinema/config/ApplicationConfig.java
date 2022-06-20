@@ -2,6 +2,8 @@ package edu.school21.cinema.config;
 
 import edu.school21.cinema.repositories.UserAuthenticationRepository;
 import edu.school21.cinema.repositories.UserRepository;
+//import edu.school21.cinema.services.AvatarService;
+import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.UserAuthenticationService;
 import edu.school21.cinema.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -70,7 +72,10 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public AppConf avatarService() {
+    public AppConf appConf() {
         return new AppConf(avatarsPath);
     }
+
+    @Bean
+    public AvatarService avatarService() { return new AvatarService(avatarsPath); }
 }

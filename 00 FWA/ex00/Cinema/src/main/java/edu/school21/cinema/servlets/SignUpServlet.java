@@ -1,5 +1,6 @@
 package edu.school21.cinema.servlets;
 
+import edu.school21.cinema.config.AppConf;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
@@ -10,9 +11,10 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/signUp")
-public class SignUp extends HttpServlet {
+public class SignUpServlet extends HttpServlet {
 
     private UserService userService;
+    private String avatarPath;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,6 +33,7 @@ public class SignUp extends HttpServlet {
 
         userService.save(user);
         request.getSession().setAttribute("user", user);
+        request.getSession().setAttribute("avatarPath", avatarPath);
         getServletContext().getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
     }
 
@@ -38,6 +41,7 @@ public class SignUp extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         ApplicationContext applicationContext = (ApplicationContext) config.getServletContext().getAttribute("springContext");
         userService = applicationContext.getBean(UserService.class);
+        avatarPath = applicationContext.getBean(AppConf.class).getAvatarPath();
         super.init(config);
     }
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/profile")
-public class Profile extends HttpServlet {
+public class ProfileServlet extends HttpServlet {
 
     private UserService userService;
     private UserAuthenticationService userAuthenticationService;

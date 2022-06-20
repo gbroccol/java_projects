@@ -5,7 +5,7 @@
          version="4.0">
 <!--  <servlet>-->
 <!--    <servlet-name>signUp</servlet-name>-->
-<!--    <servlet-class>edu.school21.cinema.servlets.SignUp</servlet-class>-->
+<!--    <servlet-class>edu.school21.cinema.servlets.SignUpServlet</servlet-class>-->
 <!--  </servlet>-->
 <!--  <servlet-mapping>-->
 <!--    <servlet-name>signUp</servlet-name>-->
@@ -20,6 +20,37 @@
   <!--  <display-name>Archetype Created Web Application</display-name>-->
 
   <!--</web-app>-->
+
+
+
+<!--  <servlet>-->
+<!--    <servlet-name>fileServlet</servlet-name>-->
+<!--    <servlet-class>edu.school21.cinema.servlets.FileServlet</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>fileServlet</servlet-name>-->
+<!--    <url-pattern>/Users/*</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+
+<!--  <servlet>-->
+<!--    <servlet-name>ImageServlet</servlet-name>-->
+<!--    <servlet-class>edu.school21.cinema.servlets.ImageServlet</servlet-class>-->
+<!--  </servlet>-->
+
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>ImageServlet</servlet-name>-->
+<!--    <url-pattern>/images/*</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+
+<!--  <servlet>-->
+<!--    <servlet-name>ImageServlet</servlet-name>-->
+<!--    <servlet-class>edu.school21.cinema.servlets.ImageServlet</servlet-class>-->
+<!--    <load-on-startup>1</load-on-startup>-->
+<!--  </servlet>-->
+
+
   
   <welcome-file-list>
     <welcome-file>/WEB-INF/jsp/signUp.jsp</welcome-file>

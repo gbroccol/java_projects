@@ -7,10 +7,10 @@
 
 <header>
     <nav>
-        <li> <a href="http://localhost:8080/Cinema/signIn">Вход</a> </li>
-        <li> <a href="http://localhost:8080/Cinema/signUp">Регистрация</a> </li>
-        <li> <a href="http://localhost:8080/Cinema/logout">Выход</a> </li>
-        <li> <a href="http://localhost:8080/Cinema/profile">Профиль</a> </li>
+        <li> <a href="http://localhost:8080/Cinema_war/signIn">Вход</a> </li>
+        <li> <a href="http://localhost:8080/Cinema_war/signUp">Регистрация</a> </li>
+        <li> <a href="http://localhost:8080/Cinema_war/logout">Выход</a> </li>
+        <li> <a href="http://localhost:8080/Cinema_war/profile">Профиль</a> </li>
     </nav>
 </header>
 

@@ -3,8 +3,8 @@
 
 <html>
     <body>
-        <p><a href="http://localhost:8080/Cinema/signIn">Sign in</a>
-        <p><a href="http://localhost:8080/Cinema/signUp">Sign up</a>
-        <p><a href="http://localhost:8080/Cinema/profile">Profile</a>
+        <p><a href="http://localhost:8080/Cinema_war/signIn">Sign in</a>
+        <p><a href="http://localhost:8080/Cinema_war/signUp">Sign up</a>
+        <p><a href="http://localhost:8080/Cinema_war/profile">Profile</a>
     </body>
 </html>

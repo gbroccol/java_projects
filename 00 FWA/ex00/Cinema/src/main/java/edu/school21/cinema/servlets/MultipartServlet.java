@@ -3,6 +3,7 @@ package edu.school21.cinema.servlets;
 import edu.school21.cinema.config.AppConf;
 import edu.school21.cinema.models.Avatar;
 import edu.school21.cinema.models.User;
+import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.UserService;
 import org.springframework.context.ApplicationContext;
 
@@ -10,21 +11,17 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Optional;
 
 @WebServlet("/images")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024,
-                    maxFileSize = 1024 * 1024 * 5,
-                    maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
 public class MultipartServlet extends HttpServlet {
 
     private UserService userService;
