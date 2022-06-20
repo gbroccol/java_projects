@@ -1,44 +1,24 @@
+# :pushpin: FWA - Java Servlet API (project 2022) 
 
-[//]: # (https://tomcat.apache.org/download-90.cgi#:~:text=Core%3A-,zip,-&#40;pgp%2C%20sha512&#41;)
+### Topics lists:
+- Servlets
+- Authentication
+- JSP
 
-chmod 777 start.sh
+# :v: To compile code and launch FWA:
 
-mvn clean package
-cp target/Cinema.war ~/Desktop/apache-tomcat-10.0.22/webapps
-chmod 777 ~/Desktop/apache-tomcat-10.0.22/bin/startup.sh
-chmod 777 ~/Desktop/apache-tomcat-10.0.22/bin/catalina.sh
-chmod 777 ~/Desktop/apache-tomcat-10.0.22/bin/shutdown.sh
-
-~/Desktop/apache-tomcat-10.0.22/bin/shutdown.sh
-~/Desktop/apache-tomcat-10.0.22/bin/startup.sh
-
-
-# :pushpin: JAVA_piscine (project 2021) 
-## :bulb: Day 00 - Management structures and arrays
-### Task lists:
-- [x] ex00
-- [x] ex01
-- [x] ex02
-- [x] ex03
-- [x] ex04
-- [ ] ex05
-### Useful links:
-[Oracle standarts](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html)
-
-## :bulb: Day 01 - OOP/Collections
-### Task lists:
-- [x] ex00
-- [x] ex01
-- [x] ex02
-- [x] ex03
-- [x] ex04
-- [x] ex05
-
-<!-- ### Useful links: -->
-
-
-## :bulb: Day 02 - IO/Files
-### Task lists:
-- [x] ex00
-- [x] ex01
-- [x] ex02
+1. Go to Desktop
+2. Clone project 
+    - git clone https://github.com/gbroccol/java_projects.git fwa
+3. Download tomcat server and run it
+    - curl + unzip ...
+    - chmod 777 ~/Desktop/apache-tomcat-9.0.58/bin/startup.sh
+    - chmod 777 ~/Desktop/apache-tomcat-9.0.58/bin/catalina.sh
+    - chmod 777 ~/Desktop/apache-tomcat-9.0.58/bin/shutdown.sh
+4. Launch project
+    - cd fwa
+    - mvn clean package
+    - cp target/Cinema.war ~/Desktop/apache-tomcat-9.0.58/webapps
+    - ~/Desktop/apache-tomcat-9.0.58/bin/startup.sh
+5. Stop project 
+    - ~/Desktop/apache-tomcat-9.0.58/bin/shutdown.sh
