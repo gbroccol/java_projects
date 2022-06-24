@@ -13,11 +13,11 @@
 - [Servlets](https://www.youtube.com/watch?v=Jnd4PQt44j0&list=PLU2ftbIeotGoQGD51e0qb98lE0xhgNDF1)
 
 ### Final version (project's scrinshots):
-![sign up](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png)
-![sing in](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png)
+![sign up](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png | width=100)
+![sing in](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png | width=100)
 
-![profile](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/profile.png)
-![error](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/error.png)
+![profile](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/profile.png | width=100)
+![error](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/error.png | width=100)
 
 ## :bulb: Cinema - Spring MVC & Hibernate
 ### Task lists:
