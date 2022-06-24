@@ -18,8 +18,8 @@
 <img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png" width="600px">
 <img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png" width="600px">
 
-<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/profile.png" width="200px">
-<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/error.png" width="200px">
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/profile.png" width="600px">
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/error.png" width="600px">
 
 ## :bulb: Cinema - Spring MVC & Hibernate
 ### Task lists:
