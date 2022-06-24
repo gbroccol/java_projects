@@ -23,8 +23,8 @@
 
 ## :bulb: Cinema - Spring MVC & Hibernate
 ### Task lists:
-- [] ex00 - Welcome To Controllers & Hibernate
-- [] ex01 - Live Search
-- [] ex02 - WebSockets
+- [ ] ex00 - Welcome To Controllers & Hibernate
+- [ ] ex01 - Live Search
+- [ ] ex02 - WebSockets
 
 ### Useful links:
