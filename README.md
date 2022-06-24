@@ -13,7 +13,15 @@
 - [Servlets](https://www.youtube.com/watch?v=Jnd4PQt44j0&list=PLU2ftbIeotGoQGD51e0qb98lE0xhgNDF1)
 
 ### Final version (project's scrinshots):
-![sign up](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png | width=100)
+<!-- ![sign up](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png | width=100) -->
+
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png" width="200px">
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png" width="200px">
+
+<img src="" width="200px">
+<img src="" width="200px">
+
+
 ![sing in](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png | width=100)
 
 ![profile](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/profile.png | width=100)
