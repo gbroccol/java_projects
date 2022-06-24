@@ -1,10 +1,3 @@
-<%--
-        <%@ include file="hello.jsp" %>
-        <jsp:include page="hello.jsp" /> - лучше
-
-        <jsp:forward page=""></jsp:forward> перенаправление на другую страницу
---%>
-
 <%
     String errorMsg = (String) session.getAttribute("error_msg");
     if (errorMsg == null) {

@@ -3,8 +3,9 @@ package edu.school21.cinema.servlets;
 import edu.school21.cinema.config.AppConf;
 import edu.school21.cinema.models.Avatar;
 import edu.school21.cinema.models.User;
-import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.UserService;
+import jakarta.activation.MimetypesFileTypeMap;
+import org.apache.commons.io.FileUtils;
 import org.springframework.context.ApplicationContext;
 
 import javax.servlet.ServletConfig;
@@ -16,12 +17,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Optional;
 
 @WebServlet("/images")
-@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 5, maxRequestSize = 1024 * 1024 * 5 * 5)
+@MultipartConfig(fileSizeThreshold = 1024 * 1024,
+        maxFileSize = 1024 * 1024 * 5,
+        maxRequestSize = 1024 * 1024 * 5 * 5)
 public class MultipartServlet extends HttpServlet {
 
     private UserService userService;
@@ -39,18 +40,20 @@ public class MultipartServlet extends HttpServlet {
 
         String fileName = null;
         String fileOriginalName = null;
-        String size = "size";
-        String mime = "mime";
 
         for (Part part : req.getParts()) {
             fileOriginalName = getFileName(part);
             fileName = timeStamp + "_" + fileOriginalName;
             part.write(UPLOAD_DIRECTORY + File.separator + fileName);
         }
-        user.setAvatar(new Avatar(user.getUserId(), fileName, fileOriginalName, size, mime));
+
+        Long size = Files.size(Paths.get(UPLOAD_DIRECTORY + File.separator + fileName));
+        String mime = new MimetypesFileTypeMap().getContentType(new File(UPLOAD_DIRECTORY + File.separator + fileName));
+
+
+        user.setAvatar(new Avatar(user.getUserId(), fileName, fileOriginalName, FileUtils.byteCountToDisplaySize(size), mime));
         userService.updateAvatar(user);
-//        user.setAvatar(uploadPath + File.separator + fileName);
-        getServletContext().getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(req, resp);
+        resp.sendRedirect(req.getContextPath() + "/profile");
     }
 
     private String getFileName(Part part) {
@@ -59,7 +62,6 @@ public class MultipartServlet extends HttpServlet {
                 return content.substring(content.indexOf("=") + 2, content.length() - 1);
         }
         return "def_file_name";
-//        return Constants.DEFAULT_FILENAME;
     }
 
     @Override

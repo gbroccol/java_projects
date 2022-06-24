@@ -1,5 +1,3 @@
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
-
 <%
     String errorMsg = (String) session.getAttribute("error_msg");
     if (errorMsg == null) {

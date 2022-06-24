@@ -5,7 +5,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
-@WebFilter(value = "/profile") //, initParams = {@WebInitParam(name = "name", value = "value")})
+@WebFilter(value = "/profile")
 public class ProfileFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

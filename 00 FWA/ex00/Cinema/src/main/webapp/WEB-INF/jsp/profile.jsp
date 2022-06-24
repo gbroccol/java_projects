@@ -1,14 +1,13 @@
 <%@ page import="edu.school21.cinema.models.User" %>
 <%@ page import="java.util.List" %>
-<%@ page import="edu.school21.cinema.models.UserAuthentication" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.io.File" %>
+<%@ page import="edu.school21.cinema.services.AvatarService" %>
+<%@ page import="edu.school21.cinema.models.Avatar" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
     User user = (User) session.getAttribute("user");
-    String avatarPath = (String) session.getAttribute("avatarPath");
+    String avatarPath;
 
     if (user.getAvatar() == null) {
         avatarPath = "https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg";
@@ -25,7 +24,7 @@
             <h3> Photo </h3>
             <img class="circle" src="<%= avatarPath %>" alt="User avatar">
             <form method="post" action="<%= request.getContextPath() %>/images" enctype="multipart/form-data">
-                Choose a file: <input type="file" name="multiPartServlet" />
+                Choose a file: <input type="file" name="multiPartServlet" required />
                 <input type="submit" value="Upload" />
             </form>
 
@@ -79,49 +78,34 @@
             <div class="allPhotos">
 
                 <%
-                    List<String> photoList = new ArrayList<>();
+                    AvatarService avatarService = (AvatarService) request.getSession().getAttribute("avatarService");
+                    List <Avatar> avatarList = avatarService.findAllByUserId(user.getUserId());
 
-                    File folder = new File(request.getServletContext().getRealPath("") + "images/users/" + user.getLogin());
-                    File[] listOfFiles = folder.listFiles();
-
-                    if (folder.exists()) {
-                        for (int i = 0; i < listOfFiles.length; i++) {
-                            if (listOfFiles[i].isFile()) {
-                                photoList.add(listOfFiles[i].getName());
-                            }
-                        }
-
-                        if (photoList != null) {
-                            for (String fileName : photoList) {
+                    if (avatarList != null) {
+                        for (Avatar avatar : avatarList) {
                 %>
 
-
                 <div class="photoCard">
-                    <img src="images/users/<%= user.getLogin() %>/<%= fileName %>">
-                    <p> <b> File name: </b> 00.jpg
-                    <p> <b> Size: </b> 1MB
-                    <p> <b> MIME: </b> image/jpg
+                    <div class="photoCardImg">
+                        <a href="images/<%= avatar.getFileName() %>" target="_blank">
+                            <img src="images/<%= avatar.getFileName() %>" class="center_img">
+                        </a>
+                    </div>
+                    <div class="photoCardText">
+                        <p> <b> File name: </b> <%= avatar.getFileOriginalName() %>
+                        <p> <b> Size: </b> <%= avatar.getSize() %>
+                        <p> <b> MIME: </b> <%= avatar.getMime() %>
+                    </div>
                 </div>
 
                 <%
-                            }
                         }
                     }
                 %>
             </div>
-
         </div>
-
-
-
     </div>
 </div>
-
-
-
-
-
-
 
 <style>
     table {
@@ -142,7 +126,14 @@
     }
 
     .allPhotos img {
-        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    .photoCardImg {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
     }
 
     .allPhotos {

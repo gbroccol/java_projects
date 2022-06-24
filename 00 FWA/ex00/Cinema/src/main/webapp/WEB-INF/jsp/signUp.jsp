@@ -1,4 +1,4 @@
- <div class="login">
+<div class="login">
 
     <h2 class="login-header"> Sign Up </h2>
 

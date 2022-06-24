@@ -18,6 +18,10 @@ public class Avatar {
     private String          size;
     private String          mime;
 
+    public Avatar(Long imageId) {
+        this.imageId = imageId;
+    }
+
     public Avatar(Long userId, String fileName, String fileOriginalName, String size, String mime) {
         this.userId = userId;
         this.fileName = fileName;

@@ -1,8 +1,8 @@
 package edu.school21.cinema.config;
 
+import edu.school21.cinema.repositories.AvatarRepository;
 import edu.school21.cinema.repositories.UserAuthenticationRepository;
 import edu.school21.cinema.repositories.UserRepository;
-//import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.UserAuthenticationService;
 import edu.school21.cinema.services.UserService;
@@ -52,13 +52,18 @@ public class ApplicationConfig {
     }
 
     @Bean
+    public AvatarRepository avatarRepository() {
+        return new AvatarRepository(jdbcTemplate());
+    }
+
+    @Bean
     public UserRepository userRepository() {
         return new UserRepository(jdbcTemplate());
     }
 
     @Bean
     public UserService userService() {
-        return new UserService(userRepository());
+        return new UserService(userRepository(), avatarRepository());
     }
 
     @Bean
@@ -77,5 +82,5 @@ public class ApplicationConfig {
     }
 
     @Bean
-    public AvatarService avatarService() { return new AvatarService(avatarsPath); }
+    public AvatarService avatarService() { return new AvatarService(avatarsPath, avatarRepository()); }
 }
