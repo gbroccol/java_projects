@@ -15,8 +15,8 @@
 ### Final version (project's scrinshots):
 <!-- ![sign up](https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png | width=100) -->
 
-<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png" width="200px">
-<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png" width="200px">
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20up.png" width="600px">
+<img src="https://github.com/gbroccol/java_projects/blob/main/00%20FWA/imgForReadMe/sign%20in.png" width="600px">
 
 <img src="" width="200px">
 <img src="" width="200px">
