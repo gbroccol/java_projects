@@ -14,14 +14,9 @@ import javax.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class UserAuthentication {
-
+public class Message {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private Long userId;
-    private String date;
-    private String time;
-    private String ip;
 }
