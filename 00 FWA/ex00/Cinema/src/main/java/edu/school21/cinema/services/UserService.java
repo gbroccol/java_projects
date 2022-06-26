@@ -24,8 +24,8 @@ public class UserService {
             new NotSavedSubEntityException();
         }
         User userObj = findByLogin(user.getLogin());
-        if (userObj == null) {
-            new NotSavedSubEntityException();
+        if (userObj != null) {
+            throw new NotSavedSubEntityException();
         }
 
         String hashedPassword = passwordEncoder.encode(user.getPassword());
@@ -35,8 +35,12 @@ public class UserService {
     }
 
     public User findByLogin(String login) {
-        User user = userRepository.findByLogin(login);
-        user.setAvatar(avatarRepository.findByImageId(user.getAvatar().getImageId()));
+        User user = null;
+        try {
+            user = userRepository.findByLogin(login);
+            user.setAvatar(avatarRepository.findByImageId(user.getAvatar().getImageId()));
+        } catch (Exception e) {
+        }
         return user;
     }
 

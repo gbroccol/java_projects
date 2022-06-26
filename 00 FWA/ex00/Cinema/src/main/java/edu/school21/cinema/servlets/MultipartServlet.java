@@ -34,6 +34,11 @@ public class MultipartServlet extends HttpServlet {
         String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
         User user = (User) req.getSession().getAttribute("user");
 
+        if (user == null) {
+            resp.sendRedirect(req.getContextPath() + "/signIn");
+            return;
+        }
+
         String UPLOAD_DIRECTORY = avatarPath + "/" + user.getLogin();
         Path avatarPath = Paths.get(UPLOAD_DIRECTORY);
         Files.createDirectories(avatarPath);
