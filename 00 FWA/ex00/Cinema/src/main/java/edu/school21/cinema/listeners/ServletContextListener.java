@@ -53,6 +53,8 @@ public class ServletContextListener implements javax.servlet.ServletContextListe
     private void runSqlStatements(List<String> ddlStatements, JdbcTemplate jdbcTemplate) {
         try {
             ddlStatements.forEach(jdbcTemplate::execute);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+            System.out.print("Failed to prepare db. Error: " + e.getMessage());
+        }
     }
 }
