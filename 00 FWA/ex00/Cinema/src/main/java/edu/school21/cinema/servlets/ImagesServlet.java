@@ -43,16 +43,15 @@ public class ImagesServlet extends HttpServlet {
         }
         Path p = avatarService.getAppAvatarsPath().resolve(user.getLogin());
         Path path = p.resolve(req.getPathInfo().substring(1));
-        try (ServletOutputStream out = resp.getOutputStream()) {
-            Files.copy(path, out);
-        } catch (Exception e) {
-//            req.getSession().setAttribute("error_code", "404");
-//            req.getSession().setAttribute("error_msg", "The requested resource was not found");
-            resp.sendRedirect(req.getContextPath() + "/error");
-//            resp.sendError(403);
-            return;
-//            RequestDispatcher dispatcher = req.getRequestDispatcher(req.getContextPath() + "/jsp/error.jsp");
-//            dispatcher.forward(req, resp);
+
+        if (Files.exists(path)) {
+            try (ServletOutputStream out = resp.getOutputStream()) {
+                Files.copy(path, out);
+            }
+        } else {
+            req.getSession().setAttribute("error_code", "404");
+            req.getSession().setAttribute("error_msg", "The requested resource was not found");
+            req.getRequestDispatcher("/WEB-INF/jsp/error.jsp").forward(req, resp);
         }
     }
 }
