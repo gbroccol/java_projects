@@ -17,8 +17,7 @@
     chmod 777 ~/Desktop/apache-tomcat-9.0.64/bin/catalina.sh
     chmod 777 ~/Desktop/apache-tomcat-9.0.64/bin/shutdown.sh
 5. Fill out application.properties file with db connection data and avatar storage path.
-6. Launch project
-    cd fwa
+6. Go to project directory and launch project
     mvn clean package
     cp target/Cinema.war ~/Desktop/apache-tomcat-9.0.64/webapps
     ~/Desktop/apache-tomcat-9.0.64/bin/startup.sh

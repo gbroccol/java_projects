@@ -21,6 +21,16 @@
     <location>/WEB-INF/jsp/error.jsp</location>
   </error-page>
 
+  <error-page>
+    <error-code>403</error-code>
+    <location>/WEB-INF/jsp/error.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/WEB-INF/jsp/error.jsp</location>
+  </error-page>
+
   <jsp-config>
     <jsp-property-group>
       <url-pattern>/WEB-INF/jsp/error.jsp</url-pattern>

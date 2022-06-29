@@ -3,6 +3,7 @@ package edu.school21.cinema.servlets;
 import edu.school21.cinema.config.AppConf;
 import edu.school21.cinema.models.User;
 import edu.school21.cinema.models.UserAuthentication;
+import edu.school21.cinema.repositories.NotSavedSubEntityException;
 import edu.school21.cinema.services.AvatarService;
 import edu.school21.cinema.services.UserAuthenticationService;
 import edu.school21.cinema.services.UserService;
@@ -37,7 +38,15 @@ public class SignUpServlet extends HttpServlet {
                                 request.getParameter("phone_number"),
                                 request.getParameter("email"));
 
-        userService.save(user);
+        try {
+            userService.save(user);
+        } catch (NotSavedSubEntityException e) {
+            HttpSession session = request.getSession();
+            session.setAttribute("error_msg", "Login exists.");
+            getServletContext().getRequestDispatcher("/WEB-INF/jsp/signUp.jsp").forward(request, response);
+            return;
+        }
+
         request.getSession().setAttribute("user", user);
         request.getSession().setAttribute("avatarPath", avatarPath);
         request.getSession().setAttribute("avatarService", avatarService);

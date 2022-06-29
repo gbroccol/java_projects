@@ -3,6 +3,7 @@ package edu.school21.cinema.filters;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(value = "/profile")
@@ -22,7 +23,8 @@ public class ProfileFilter implements Filter {
         } else {
             request.getSession().setAttribute("error_code", "403");
             request.getSession().setAttribute("error_msg", "Forbidden. No access");
-            request.getRequestDispatcher("/error.jsp").forward(servletRequest, servletResponse);
+            HttpServletResponse response = (HttpServletResponse) servletResponse;
+            response.sendError(403);
         }
     }
 

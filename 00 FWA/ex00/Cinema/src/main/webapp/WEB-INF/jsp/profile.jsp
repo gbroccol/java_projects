@@ -83,25 +83,9 @@
 
                     if (avatarList != null) {
                         session.setAttribute("avatar_list", avatarList);
-                        //                        for (Avatar avatar : avatarList) {
                 %>
 
-
                 <c:forEach items = "${avatar_list}" var="avatar">
-
-<%--                    <tr>--%>
-<%--                        <td>--%>
-<%--                            <c:out value = "${authentication.date}" />--%>
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                                ${authentication.time}--%>
-<%--                        </td>--%>
-<%--                        <td>--%>
-<%--                                ${authentication.ip}--%>
-<%--                        </td>--%>
-<%--                    </tr>--%>
-
-
                 <div class="photoCard">
                     <div class="photoCardImg">
                         <a href="images/${avatar.fileName}" target="_blank">
@@ -114,12 +98,8 @@
                         <p> <b> MIME: </b> ${avatar.mime}
                     </div>
                 </div>
-
                 </c:forEach>
-
-
                 <%
-//                        }
                     }
                 %>
             </div>
