@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="edu.school21.cinema.services.AvatarService" %>
 <%@ page import="edu.school21.cinema.models.Avatar" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%
@@ -104,42 +104,6 @@
                 %>
             </div>
         </div>
+
     </div>
 </div>
-
-<style>
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    th, td {
-        text-align: left;
-        padding: 8px;
-    }
-
-    tr:nth-child(even){background-color: #f2f2f2}
-
-    th {
-        background-color: #28d;
-        color: white;
-    }
-
-    .allPhotos img {
-        height: 100%;
-        position: absolute;
-    }
-
-    .photoCardImg {
-        position: relative;
-        overflow: hidden;
-        height: 200px;
-    }
-
-    .allPhotos {
-        display: grid;
-        gap: 14px;
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-</style>

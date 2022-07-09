@@ -6,7 +6,7 @@
 
 <style>
 
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+    /*@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);*/
 
     * {
         margin: 0px;
@@ -212,5 +212,84 @@
     a:active {
         color: #ebebeb;
     }
+
+
+
+
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2}
+
+    th {
+        background-color: #28d;
+        color: white;
+    }
+
+
+
+
+
+    .allPhotos {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .allPhotos img {
+        height: 100%;
+        position: absolute;
+    }
+
+    .photoCardImg {
+        position: relative;
+        overflow: hidden;
+        height: 200px;
+    }
+
+
+
+
+
+
+    .title {
+        padding: 50px 0px 30px 0px;
+    }
+
+    .title h1 {
+        text-align: center
+    }
+
+
+
+
+
+
+
+    .section {
+        display: grid;
+        gap: 14px;
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .preview_img {
+        position: relative;
+        overflow: hidden;
+        height: 130px;
+    }
+
+    .preview_img img {
+        width: 100%;
+        position: absolute;
+    }
+
 
 </style>

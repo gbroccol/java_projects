@@ -37,6 +37,9 @@
       <url-pattern>/WEB-INF/jsp/profile.jsp</url-pattern>
       <url-pattern>/WEB-INF/jsp/signIn.jsp</url-pattern>
       <url-pattern>/WEB-INF/jsp/signUp.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/films.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/halls.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/sessions.jsp</url-pattern>
       <include-prelude>/WEB-INF/jsp/header.jsp</include-prelude>
     </jsp-property-group>
     <jsp-property-group>
@@ -44,6 +47,9 @@
       <url-pattern>/WEB-INF/jsp/profile.jsp</url-pattern>
       <url-pattern>/WEB-INF/jsp/signIn.jsp</url-pattern>
       <url-pattern>/WEB-INF/jsp/signUp.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/films.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/halls.jsp</url-pattern>
+      <url-pattern>/WEB-INF/jsp/sessions.jsp</url-pattern>
       <include-coda>/WEB-INF/jsp/footer.jsp</include-coda>
     </jsp-property-group>
   </jsp-config>
