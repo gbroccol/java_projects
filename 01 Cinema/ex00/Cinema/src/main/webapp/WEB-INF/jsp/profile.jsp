@@ -82,24 +82,24 @@
                     List <Avatar> avatarList = avatarService.findAllByUserId(user.getUserId());
 
                     if (avatarList != null) {
-                        for (Avatar avatar : avatarList) {
+                        session.setAttribute("avatar_list", avatarList);
                 %>
 
+                <c:forEach items = "${avatar_list}" var="avatar">
                 <div class="photoCard">
                     <div class="photoCardImg">
-                        <a href="images/<%= avatar.getFileName() %>" target="_blank">
-                            <img src="images/<%= avatar.getFileName() %>" class="center_img">
+                        <a href="images/${avatar.fileName}" target="_blank">
+                            <img src="images/${avatar.fileName}" class="center_img">
                         </a>
                     </div>
                     <div class="photoCardText">
-                        <p> <b> File name: </b> <%= avatar.getFileOriginalName() %>
-                        <p> <b> Size: </b> <%= avatar.getSize() %>
-                        <p> <b> MIME: </b> <%= avatar.getMime() %>
+                        <p> <b> File name: </b> ${avatar.fileOriginalName}
+                        <p> <b> Size: </b> ${avatar.size}
+                        <p> <b> MIME: </b> ${avatar.mime}
                     </div>
                 </div>
-
+                </c:forEach>
                 <%
-                        }
                     }
                 %>
             </div>

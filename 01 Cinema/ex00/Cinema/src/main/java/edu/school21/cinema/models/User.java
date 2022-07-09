@@ -5,21 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity
 public class User {
 
-    @Id
-    @Column(name = "userId", nullable = false)
-    private Long userId;
-
+    private Long        userId;
     private String      login;
     private String      password;
     private String      firstName;

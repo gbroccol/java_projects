@@ -31,8 +31,13 @@ public class MultipartServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date());
+        String timeStamp = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new java.util.Date());
         User user = (User) req.getSession().getAttribute("user");
+
+        if (user == null) {
+            resp.sendRedirect(req.getContextPath() + "/signIn");
+            return;
+        }
 
         String UPLOAD_DIRECTORY = avatarPath + "/" + user.getLogin();
         Path avatarPath = Paths.get(UPLOAD_DIRECTORY);

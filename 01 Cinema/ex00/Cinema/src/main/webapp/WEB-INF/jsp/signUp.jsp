@@ -1,3 +1,17 @@
+<%
+    String errorMsg = (String) session.getAttribute("error_msg");
+    if (errorMsg == null) {
+        errorMsg = "";
+    } else {
+        errorMsg = "Opps! " + errorMsg;
+    }
+    session.removeAttribute("error_msg");
+%>
+
+<p>
+    <%= errorMsg %>
+</p>
+
 <div class="login">
 
     <h2 class="login-header"> Sign Up </h2>
