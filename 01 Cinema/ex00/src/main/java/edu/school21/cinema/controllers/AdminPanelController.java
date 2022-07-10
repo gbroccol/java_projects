@@ -12,4 +12,29 @@ public class AdminPanelController {
     public String getHalls() {
             return "halls";
     }
+
+    @RequestMapping(value = "/halls", method = RequestMethod.POST)
+    public String updateHalls() {
+        return "halls";
+    }
+
+    @RequestMapping(value = "/films", method = RequestMethod.GET)
+    public String getFilms() {
+        return "films";
+    }
+
+    @RequestMapping(value = "/films", method = RequestMethod.POST)
+    public String updateFilms() {
+        return "films";
+    }
+
+    @RequestMapping(value = "/sessins", method = RequestMethod.GET)
+    public String getSessions() {
+        return "sessions";
+    }
+
+    @RequestMapping(value = "/sessions", method = RequestMethod.POST)
+    public String updateSessions() {
+        return "sessions";
+    }
 }
